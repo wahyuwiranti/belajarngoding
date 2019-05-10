@@ -17,6 +17,11 @@ public class UI_Admin extends javax.swing.JFrame {
      * Creates new form UI_Admin
      */
     public UI_Admin() {
+        this.setTitle("EKSCALIBUR");
+        this.setLocation(400, 160);
+        this.setSize(500, 300);
+        this.setLayout(null);
+
         initComponents();
     }
 
