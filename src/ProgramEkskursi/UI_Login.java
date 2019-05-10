@@ -19,6 +19,10 @@ public class UI_Login extends javax.swing.JFrame {
      * Creates new form UI_Login
      */
     public UI_Login() {
+        this.setTitle("EKSCALIBUR");
+        this.setLocation(400, 160);
+        this.setSize(500, 300);
+        this.setLayout(null);
         initComponents();
     }
 
