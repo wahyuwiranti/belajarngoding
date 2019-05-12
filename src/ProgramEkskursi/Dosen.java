@@ -9,4 +9,7 @@ package ProgramEkskursi;
  * @author asus pc
  */
 class Dosen extends User{
+    String NIP;
+    String nama;
+    String prodi;
 }
