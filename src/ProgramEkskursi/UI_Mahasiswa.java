@@ -96,7 +96,7 @@ public class UI_Mahasiswa extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText(": "+mhs.prodi);
 
-        jButton3.setText("Lihat Ekskursi");
+        jButton3.setText("View Ekskursi");
         jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton3MouseClicked(evt);
@@ -108,7 +108,7 @@ public class UI_Mahasiswa extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Ganti Username");
+        jButton2.setText("Change Password");
         jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton2MouseClicked(evt);
@@ -127,7 +127,7 @@ public class UI_Mahasiswa extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setText("Ganti Password");
+        jButton4.setText("Change Username");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -243,7 +243,7 @@ public class UI_Mahasiswa extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         new UI_ChangePassword("mahasiswa",mhs.username).setVisible(true);
-        dispose();
+        //dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed

@@ -21,7 +21,7 @@ public class UI_Login extends javax.swing.JFrame {
     public UI_Login() {
         this.setTitle("EKSCALIBUR");
         this.setLocation(400, 160);
-        this.setSize(500, 300);
+        this.setSize(500, 320);
         this.setLayout(null);
         initComponents();
     }
@@ -35,7 +35,7 @@ public class UI_Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        background1 = new ProgramEkskursi.Background();
+        background2 = new ProgramEkskursi.Background();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jFormattedTextField1 = new javax.swing.JFormattedTextField();
@@ -51,17 +51,21 @@ public class UI_Login extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         jLabel1.setText("LOGIN FIRST...");
 
-        jLabel2.setText("USERNAME  :");
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel2.setText("USERNAME  ");
 
-        jFormattedTextField1.setText("NIM/NIK");
+        jFormattedTextField1.setText("Username");
+        jFormattedTextField1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jFormattedTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jFormattedTextField1ActionPerformed(evt);
             }
         });
 
-        jLabel3.setText("PASSWORD :");
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel3.setText("PASSWORD ");
 
+        jPasswordField1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jPasswordField1.setText("JOKAM354");
         jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -76,102 +80,105 @@ public class UI_Login extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout background1Layout = new javax.swing.GroupLayout(background1);
-        background1.setLayout(background1Layout);
-        background1Layout.setHorizontalGroup(
-            background1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(background1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(background1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(background1Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(10, 10, 10)
-                        .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(background1Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(10, 10, 10)
-                        .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(background1Layout.createSequentialGroup()
-                        .addGap(136, 136, 136)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
-            .addGroup(background1Layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(jLabel1)
-                .addContainerGap(33, Short.MAX_VALUE))
+        javax.swing.GroupLayout background2Layout = new javax.swing.GroupLayout(background2);
+        background2.setLayout(background2Layout);
+        background2Layout.setHorizontalGroup(
+            background2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(background2Layout.createSequentialGroup()
+                .addGroup(background2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(background2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel1))
+                    .addGroup(background2Layout.createSequentialGroup()
+                        .addGap(152, 152, 152)
+                        .addGroup(background2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, background2Layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                            .addGroup(background2Layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addGap(12, 12, 12)))
+                        .addGroup(background2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jPasswordField1, javax.swing.GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE)
+                            .addComponent(jFormattedTextField1))))
+                .addContainerGap(51, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, background2Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40))
         );
-        background1Layout.setVerticalGroup(
-            background1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(background1Layout.createSequentialGroup()
-                .addGap(34, 34, 34)
+        background2Layout.setVerticalGroup(
+            background2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(background2Layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(27, 27, 27)
-                .addGroup(background1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(background1Layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(jLabel2))
+                .addGap(59, 59, 59)
+                .addGroup(background2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
                     .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(11, 11, 11)
-                .addGroup(background1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(background1Layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(jLabel3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(background2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
                     .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
+                .addGap(32, 32, 32)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(83, Short.MAX_VALUE))
+                .addContainerGap(93, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(background2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(background2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jFormattedTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jFormattedTextField1ActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        String x=jFormattedTextField1.getText();
+        try {
+            ResultSet userMhs=konek.createStatement().executeQuery("SELECT * FROM `mahasiswa` where USERNAME='"+x+"' AND PASS='"+String.valueOf(jPasswordField1.getText())+"'");
+            ResultSet userDsn=konek.createStatement().executeQuery("SELECT * FROM `dosen` where USERNAME='"+x+"' AND PASS='"+String.valueOf(jPasswordField1.getText())+"'");
+            ResultSet operator=konek.createStatement().executeQuery("SELECT * FROM `operator` where USERNAME='"+x+"' AND PASS='"+String.valueOf(jPasswordField1.getText())+"'");
+            if(userMhs.next()){
+                Mahasiswa p=new Mahasiswa();
+                p.nama=userMhs.getString("nama");
+                p.nim=userMhs.getString("nim");
+                p.prodi=userMhs.getString("prodi");
+                p.username=userMhs.getString("username");
+                p.password=userMhs.getString("pass");
+                //System.out.println(p.nama+" "+p.nim+" "+p.prodi+" ");
+                new UI_Mahasiswa(p).setVisible(true);
+                dispose();
+            }else if(userDsn.next()){
+                JOptionPane.showMessageDialog(rootPane, "Menu Dosen belum dibuat ");
+            }else if(operator.next()){
+                JOptionPane.showMessageDialog(rootPane, "Menu Operator belum dibuat ");
+            }else if(x.equals("admin") && String.valueOf(jPasswordField1.getText()).equals("admin")){
+                new UI_Admin().setVisible(true);
+                dispose();
+            }else{
+                JOptionPane.showMessageDialog(rootPane, "Periksa kembali username dan password yang dimasukkan");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(UI_Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jPasswordField1ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String x=jFormattedTextField1.getText();
-            try {
-                ResultSet userMhs=konek.createStatement().executeQuery("SELECT * FROM `mahasiswa` where USERNAME='"+x+"' AND PASS='"+String.valueOf(jPasswordField1.getText())+"'");
-                ResultSet userDsn=konek.createStatement().executeQuery("SELECT * FROM `dosen` where USERNAME='"+x+"' AND PASS='"+String.valueOf(jPasswordField1.getText())+"'");
-                ResultSet operator=konek.createStatement().executeQuery("SELECT * FROM `operator` where USERNAME='"+x+"' AND PASS='"+String.valueOf(jPasswordField1.getText())+"'");
-                if(userMhs.next()){
-                    Mahasiswa p=new Mahasiswa();
-                    p.nama=userMhs.getString("nama");
-                    p.nim=userMhs.getString("nim");
-                    p.prodi=userMhs.getString("prodi");
-                    //System.out.println(p.nama+" "+p.nim+" "+p.prodi+" ");
-                    new UI_Mahasiswa(p).setVisible(true);
-                    dispose();
-                }else if(userDsn.next()){
-                    JOptionPane.showMessageDialog(rootPane, "Menu Dosen belum dibuat ");
-                }else if(operator.next()){
-                    JOptionPane.showMessageDialog(rootPane, "Menu Operator belum dibuat ");
-                }else if(x.equals("admin") && String.valueOf(jPasswordField1.getText()).equals("admin")){
-                    new UI_Admin().setVisible(true);
-                    dispose();
-                }else{
-                    JOptionPane.showMessageDialog(rootPane, "Periksa kembali username dan password yang dimasukkan");
-                }
-            } catch (SQLException ex) {
-                Logger.getLogger(UI_Login.class.getName()).log(Level.SEVERE, null, ex);
-            }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void jFormattedTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jFormattedTextField1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -209,7 +216,7 @@ public class UI_Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private ProgramEkskursi.Background background1;
+    private ProgramEkskursi.Background background2;
     private javax.swing.JButton jButton1;
     private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JLabel jLabel1;

@@ -18,6 +18,8 @@ import java.util.logging.Logger;
  */
 public class User {
     Scanner input=new Scanner(System.in);
+    String username;
+    String password;
     static Connection konek;
     
     public static Connection getConnection(){
