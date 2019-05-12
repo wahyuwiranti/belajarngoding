@@ -121,7 +121,7 @@ public class UI_KumpulanDosen extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         TabelMhs = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<String>();
+        jComboBox1 = new javax.swing.JComboBox<>();
         jTextField1 = new javax.swing.JTextField();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jTextField2 = new javax.swing.JTextField();
@@ -134,7 +134,7 @@ public class UI_KumpulanDosen extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        TabelMhs1 = new javax.swing.JTable();
+        TabelDosen = new javax.swing.JTable();
 
         TabelMhs.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -154,7 +154,7 @@ public class UI_KumpulanDosen extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setText("DAFTAR DOSEN");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Pilih Prodi", "Teknik Geofisika", "Perencanaan Wilayah dan Kota", "Teknik Geomatika", "Fisika", "Teknik Elektro", "Teknik Informatika", "Teknik Sipil", " " }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pilih Prodi", "Teknik Geofisika", "Perencanaan Wilayah dan Kota", "Teknik Geomatika", "Fisika", "Teknik Elektro", "Teknik Informatika", "Teknik Sipil", " " }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
@@ -211,7 +211,7 @@ public class UI_KumpulanDosen extends javax.swing.JFrame {
             }
         });
 
-        TabelMhs1.setModel(new javax.swing.table.DefaultTableModel(
+        TabelDosen.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -222,12 +222,12 @@ public class UI_KumpulanDosen extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        TabelMhs1.addMouseListener(new java.awt.event.MouseAdapter() {
+        TabelDosen.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                TabelMhs1MouseClicked(evt);
+                TabelDosenMouseClicked(evt);
             }
         });
-        jScrollPane2.setViewportView(TabelMhs1);
+        jScrollPane2.setViewportView(TabelDosen);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -352,11 +352,11 @@ public class UI_KumpulanDosen extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void TabelMhs1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabelMhs1MouseClicked
+    private void TabelDosenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabelDosenMouseClicked
         // Tabel di Klik
         dataSelect();
 
-    }//GEN-LAST:event_TabelMhs1MouseClicked
+    }//GEN-LAST:event_TabelDosenMouseClicked
 
     /**
      * @param args the command line arguments
@@ -394,8 +394,8 @@ public class UI_KumpulanDosen extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable TabelDosen;
     private javax.swing.JTable TabelMhs;
-    private javax.swing.JTable TabelMhs1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
