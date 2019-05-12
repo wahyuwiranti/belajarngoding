@@ -10,14 +10,22 @@ package ProgramEkskursi;
  * @author asus pc
  */
 public class UI_Mahasiswa extends javax.swing.JFrame {
-    Mahasiswa mhs=new Mahasiswa();
+    Mahasiswa mhs=new Mahasiswa();    
     /**
      * Creates new form UI_Mahasiswa
-     */
+     */    
     public UI_Mahasiswa() {
+        setTitle("EKSCALIBUR");
+        setLocation(400, 160);
+        setSize(500, 300);
+        setLayout(null);
         initComponents();
     }
     public UI_Mahasiswa(Mahasiswa p) {
+        setTitle("EKSCALIBUR");
+        setLocation(400, 160);
+        setSize(500, 300);
+        setLayout(null);
         mhs=p;
         initComponents();
     }
