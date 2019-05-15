@@ -17,7 +17,5 @@ class Mahasiswa extends User{
         this.nim = nim;
         this.prodi = prodi;
         this.TTL = TTL;
-    }
-    
-    
+    }   
 }

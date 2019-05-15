@@ -53,7 +53,7 @@ public class UI_Login extends javax.swing.JFrame {
 
         jLabel2.setText("USERNAME  :");
 
-        jFormattedTextField1.setText("NIM/NIK");
+        jFormattedTextField1.setText("NIM/NRK/NIP");
         jFormattedTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jFormattedTextField1ActionPerformed(evt);
@@ -106,10 +106,8 @@ public class UI_Login extends javax.swing.JFrame {
                 .addGap(34, 34, 34)
                 .addComponent(jLabel1)
                 .addGap(27, 27, 27)
-                .addGroup(background1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(background1Layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(jLabel2))
+                .addGroup(background1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
                     .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(11, 11, 11)
                 .addGroup(background1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -159,9 +157,21 @@ public class UI_Login extends javax.swing.JFrame {
                     new UI_Mahasiswa(p).setVisible(true);
                     dispose();
                 }else if(userDsn.next()){
-                    JOptionPane.showMessageDialog(rootPane, "Menu Dosen belum dibuat ");
+                    //JOptionPane.showMessageDialog(rootPane, "Menu Dosen belum dibuat ");
+                    Dosen p=new Dosen();
+                    p.nama=userDsn.getString("nama");
+                    p.nip=userDsn.getString("nip");
+                    p.prodi=userDsn.getString("prodi");
+                    new UI_Dosen(p).setVisible(true);
+                    dispose();
                 }else if(operator.next()){
-                    JOptionPane.showMessageDialog(rootPane, "Menu Operator belum dibuat ");
+                    //JOptionPane.showMessageDialog(rootPane, "Menu Operator belum dibuat ");
+                    Operator p=new Operator();
+                    p.nama=operator.getString("nama");
+                    p.nrk=operator.getString("nrk");
+                    p.prodi=operator.getString("prodi");
+                    new UI_Operator(p).setVisible(true);
+                    dispose();
                 }else if(x.equals("admin") && String.valueOf(jPasswordField1.getText()).equals("admin")){
                     new UI_Admin().setVisible(true);
                     dispose();
