@@ -8,6 +8,7 @@ package ProgramEkskursi;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -17,7 +18,9 @@ import javax.swing.table.DefaultTableModel;
  */
 public class UI_EkskursiMhs extends javax.swing.JFrame {
     DefaultTableModel model;
-    Mahasiswa mhs;
+    Mahasiswa mhs=new Mahasiswa();
+    Ekskursi pilih=new Ekskursi();
+    int i;
     /**
      * Creates new form UI_EkskursiMhs
      */
@@ -81,6 +84,15 @@ public class UI_EkskursiMhs extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, err.getMessage());
         }
     }
+    
+    public void dataSelect(){
+        i=EksMhs.getSelectedRow();
+        if(i==-1){
+            //tidak ada baris terpilih
+            return;
+        }
+        pilih.nama=(String) model.getValueAt(i,0);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -95,6 +107,7 @@ public class UI_EkskursiMhs extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         EksMhs = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -114,12 +127,24 @@ public class UI_EkskursiMhs extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        EksMhs.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                EksMhsMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(EksMhs);
 
         jButton1.setText("Back");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("Detail");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
             }
         });
 
@@ -137,6 +162,8 @@ public class UI_EkskursiMhs extends javax.swing.JFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 619, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addComponent(jButton1)))
                 .addContainerGap())
         );
@@ -148,7 +175,9 @@ public class UI_EkskursiMhs extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
                 .addContainerGap(80, Short.MAX_VALUE))
         );
 
@@ -159,6 +188,17 @@ public class UI_EkskursiMhs extends javax.swing.JFrame {
         new UI_Mahasiswa(mhs).setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+            new UI_DetailEkskursi(mhs,pilih).setVisible(true);
+            dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void EksMhsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EksMhsMouseClicked
+        // TODO add your handling code here:
+        dataSelect();
+    }//GEN-LAST:event_EksMhsMouseClicked
 
     /**
      * @param args the command line arguments
@@ -198,6 +238,7 @@ public class UI_EkskursiMhs extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable EksMhs;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane1;
