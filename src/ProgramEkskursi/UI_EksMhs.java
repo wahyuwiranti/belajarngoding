@@ -18,7 +18,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author asus pc
  */
-public class UI_EkskursiMhs extends javax.swing.JFrame {
+public class UI_EksMhs extends javax.swing.JFrame {
     DefaultTableModel model;
     String username;
     String ID;
@@ -26,7 +26,7 @@ public class UI_EkskursiMhs extends javax.swing.JFrame {
     /**
      * Creates new form UI_EkskursiMhs
      */
-    public UI_EkskursiMhs() {
+    public UI_EksMhs() {
         initComponents();
 
         //Memberi Penamaan pada Tabel
@@ -45,7 +45,7 @@ public class UI_EkskursiMhs extends javax.swing.JFrame {
     }
     
     
-    public UI_EkskursiMhs(String Tipe, String username) {
+    public UI_EksMhs(String Tipe, String username) {
         initComponents();
         this.Tipe=Tipe;
         if(Tipe.equals("mahasiswa")) this.username=username;
@@ -214,15 +214,19 @@ public class UI_EkskursiMhs extends javax.swing.JFrame {
         try {
             new UI_Mahasiswa(username).setVisible(true);
         } catch (SQLException ex) {
-            Logger.getLogger(UI_EkskursiMhs.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UI_EksMhs.class.getName()).log(Level.SEVERE, null, ex);
         }
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        new UI_DetailEkskursi(Tipe,username,ID).setVisible(true);
-        dispose();
+        try {
+            // TODO add your handling code here:
+            new UI_DetailEkskursi(Tipe,username,ID).setVisible(true);
+            dispose();
+        } catch (SQLException ex) {
+            Logger.getLogger(UI_EksMhs.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void tabelEkskursiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelEkskursiMouseClicked
@@ -247,20 +251,23 @@ public class UI_EkskursiMhs extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(UI_EkskursiMhs.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UI_EksMhs.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(UI_EkskursiMhs.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UI_EksMhs.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(UI_EkskursiMhs.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UI_EksMhs.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(UI_EkskursiMhs.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UI_EksMhs.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new UI_EkskursiMhs().setVisible(true);
+                new UI_EksMhs().setVisible(true);
             }
         });
     }

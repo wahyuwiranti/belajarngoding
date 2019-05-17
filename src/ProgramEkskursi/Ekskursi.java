@@ -12,13 +12,13 @@ import java.util.Date;
  * @author asus pc
  */
 public class Ekskursi {
-    Dosen pembimbing=new Dosen();
+    String NIP;
     String ID;
     String nama;
     String prodi;
     Date departure;
     
-    int tujuan;
+    String tujuan;
     int biaya;
     int kuota;
 }
