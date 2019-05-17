@@ -187,7 +187,21 @@ public class UI_ChangePassword extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        this.dispose();
+        if(tipe.equals("mahasiswa")){
+            try {
+                new UI_Mahasiswa(username).setVisible(true);
+            } catch (SQLException ex) {
+                Logger.getLogger(UI_ChangePassword.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            dispose();
+        }else if(tipe.equals("operator")){
+            new UI_Operator().setVisible(true);
+            dispose();
+        }else{
+            new UI_Dosen().setVisible(true);
+            dispose();
+        }
+        dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
