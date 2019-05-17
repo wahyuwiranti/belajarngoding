@@ -13,7 +13,7 @@ import java.util.Date;
  */
 public class Ekskursi {
     Dosen pembimbing=new Dosen();
-    int ID;
+    String ID;
     String nama;
     String prodi;
     Date departure;

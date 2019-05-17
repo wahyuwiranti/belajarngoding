@@ -12,6 +12,7 @@ package ProgramEkskursi;
 public class UI_DetailEkskursi extends javax.swing.JFrame {
     Mahasiswa mhs=new Mahasiswa();
     Ekskursi eks=new Ekskursi();
+    String tipe;
     /**
      * Creates new form UI_DetailEkskursi
      */
@@ -20,9 +21,11 @@ public class UI_DetailEkskursi extends javax.swing.JFrame {
         initComponents();    
     }
     
-    public UI_DetailEkskursi(Mahasiswa mhs,Ekskursi eks) {
-        this.mhs=mhs;
-        this.eks=eks;
+    public UI_DetailEkskursi(String tipe,String username,String ID) {
+        this.tipe=tipe;
+        
+        if(tipe.equals("mahasiswa")) mhs.username=username;
+        eks.ID=ID;
         initComponents();
     }
 

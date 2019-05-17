@@ -8,6 +8,9 @@ package ProgramEkskursi;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -17,7 +20,9 @@ import javax.swing.table.DefaultTableModel;
  */
 public class UI_EkskursiMhs extends javax.swing.JFrame {
     DefaultTableModel model;
-    Mahasiswa mhs;
+    String username;
+    String ID;
+    String Tipe;
     /**
      * Creates new form UI_EkskursiMhs
      */
@@ -26,8 +31,8 @@ public class UI_EkskursiMhs extends javax.swing.JFrame {
 
         //Memberi Penamaan pada Tabel
         model = new DefaultTableModel();
-        EksMhs.setModel(model);
-        //model.addColumn("ID");
+        tabelEkskursi.setModel(model);
+        model.addColumn("ID");
         model.addColumn("Nama");
         model.addColumn("Program Studi");
         model.addColumn("Departure");
@@ -40,14 +45,17 @@ public class UI_EkskursiMhs extends javax.swing.JFrame {
     }
     
     
-    public UI_EkskursiMhs(Mahasiswa mhs) {
+    public UI_EkskursiMhs(String Tipe, String username) {
         initComponents();
-        this.mhs=mhs;
-
+        this.Tipe=Tipe;
+        if(Tipe.equals("mahasiswa")) this.username=username;
+        else if(Tipe.equals("operator")) this.username=username;
+        else this.username=username;
+        
         //Memberi Penamaan pada Tabel
         model = new DefaultTableModel();
-        EksMhs.setModel(model);
-        //model.addColumn("ID");
+        tabelEkskursi.setModel(model);
+        model.addColumn("ID");
         model.addColumn("Nama");
         model.addColumn("Program Studi");
         model.addColumn("Departure");
@@ -69,11 +77,12 @@ public class UI_EkskursiMhs extends javax.swing.JFrame {
             
             //penelusuran baris pada tabel mahasiswa dari database
             while(res.next()){
-                Object[] obj = new Object[4];
-                obj[0] = res.getString("Nama");
-                obj[1] = res.getString("prodi");
-                obj[2] = res.getString("departure");
-                obj[3] = res.getString("kuota");
+                Object[] obj = new Object[5];
+                obj[0] = res.getString("ID");
+                obj[1] = res.getString("Nama");
+                obj[2] = res.getString("prodi");
+                obj[3] = res.getString("departure");
+                obj[4] = res.getString("kuota");
                 
                 model.addRow(obj);
             }
@@ -81,6 +90,35 @@ public class UI_EkskursiMhs extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, err.getMessage());
         }
     }
+    
+    public void dataSelect(){
+        int i=tabelEkskursi.getSelectedRow();
+        if(i==-1){
+            //tidak ada baris terpilih
+            return;
+        }
+        ID=(String) model.getValueAt(i, 0);
+        
+//        jTextField1.setText(""+model.getValueAt(i, 1));
+//        jTextField2.setText(""+model.getValueAt(i, 0));
+//        jComboBox1.getModel().setSelectedItem(model.getValueAt(i, 2));
+    }
+//    public void updateData(){
+//        // Menambahkan Data Mahasiswa
+//        String[] x=new String[4];
+//        x[0]=jTextField1.getText();
+//        x[1]=jTextField2.getText();
+//        x[2]=String.valueOf(jComboBox1.getSelectedItem());
+//        x[3]=(1900+jDateChooser1.getDate().getYear())+"-"+
+//             (1+jDateChooser1.getDate().getMonth())+"-"+
+//             jDateChooser1.getDate().getDate();
+//        System.out.println(jDateChooser1.getDate().getMonth());
+//        KumpulanMahasiswa obj=new KumpulanMahasiswa();
+//        obj.UpdateMhs(new Mahasiswa(x[0],x[1],x[2],x[3]));
+//        
+//        new UI_KumpulanMhs().setVisible(true);
+//        dispose();
+//    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -93,8 +131,9 @@ public class UI_EkskursiMhs extends javax.swing.JFrame {
         jPopupMenu1 = new javax.swing.JPopupMenu();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        EksMhs = new javax.swing.JTable();
+        tabelEkskursi = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -102,8 +141,8 @@ public class UI_EkskursiMhs extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("EKSKURSI");
 
-        EksMhs.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        EksMhs.setModel(new javax.swing.table.DefaultTableModel(
+        tabelEkskursi.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        tabelEkskursi.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -114,12 +153,24 @@ public class UI_EkskursiMhs extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(EksMhs);
+        tabelEkskursi.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabelEkskursiMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tabelEkskursi);
 
         jButton1.setText("Back");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("Detail");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
             }
         });
 
@@ -137,6 +188,8 @@ public class UI_EkskursiMhs extends javax.swing.JFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 619, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton1)))
                 .addContainerGap())
         );
@@ -148,7 +201,9 @@ public class UI_EkskursiMhs extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
                 .addContainerGap(80, Short.MAX_VALUE))
         );
 
@@ -156,9 +211,24 @@ public class UI_EkskursiMhs extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        new UI_Mahasiswa(mhs).setVisible(true);
+        try {
+            new UI_Mahasiswa(username).setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(UI_EkskursiMhs.class.getName()).log(Level.SEVERE, null, ex);
+        }
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        new UI_DetailEkskursi(Tipe,username,ID).setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void tabelEkskursiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelEkskursiMouseClicked
+        // TODO add your handling code here:
+        dataSelect();
+    }//GEN-LAST:event_tabelEkskursiMouseClicked
 
     /**
      * @param args the command line arguments
@@ -196,10 +266,11 @@ public class UI_EkskursiMhs extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTable EksMhs;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tabelEkskursi;
     // End of variables declaration//GEN-END:variables
 }

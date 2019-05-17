@@ -4,13 +4,15 @@
  * and open the template in the editor.
  */
 package ProgramEkskursi;
-
+import static ProgramEkskursi.User.konek;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 /**
  *
  * @author asus pc
  */
 public class UI_Mahasiswa extends javax.swing.JFrame {
-    Mahasiswa mhs=new Mahasiswa();    
+    Mahasiswa mhs=new Mahasiswa();
     /**
      * Creates new form UI_Mahasiswa
      */    
@@ -21,15 +23,25 @@ public class UI_Mahasiswa extends javax.swing.JFrame {
         setLayout(null);
         initComponents();
     }
-    public UI_Mahasiswa(Mahasiswa p) {
+    public UI_Mahasiswa(String Username) throws SQLException {
         setTitle("EKSCALIBUR");
         setLocation(400, 160);
         setSize(500, 300);
         setLayout(null);
-        mhs=p;
+        load(Username);
         initComponents();
     }
-
+    
+     private void load(String Username) throws SQLException{
+         ResultSet m=konek.createStatement().executeQuery("SELECT * FROM `mahasiswa` where USERNAME='"+Username+"'");
+         if(m.next()){
+            mhs.nama=m.getString("nama");
+            mhs.nim=m.getString("nim");
+            mhs.password=m.getString("pass");
+            mhs.username=m.getString("username");
+            mhs.prodi=m.getString("prodi");
+         }
+     }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -197,17 +209,19 @@ public class UI_Mahasiswa extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         new UI_ChangeUsername("mahasiswa", mhs.username).setVisible(true);
+        dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        new UI_EkskursiMhs(mhs).setVisible(true);
+        new UI_EkskursiMhs("mahasiswa",mhs.username).setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
         new UI_ChangePassword("mahasiswa", mhs.username).setVisible(true);
+        dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed

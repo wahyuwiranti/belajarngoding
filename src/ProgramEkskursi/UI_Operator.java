@@ -197,6 +197,7 @@ public class UI_Operator extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        new UI_ChangeUsername("operator", operator.username).setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
@@ -205,12 +206,11 @@ public class UI_Operator extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        //new UI_EkskursiOperator(operator).setVisible(true);
-        dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
+        new UI_ChangePassword("operator", operator.username).setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
