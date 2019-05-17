@@ -214,7 +214,7 @@ public class UI_Mahasiswa extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        new UI_EksMhs("mahasiswa",mhs.username).setVisible(true);
+        new UI_EkskursiMhs("mahasiswa",mhs.username).setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
