@@ -4,6 +4,10 @@
  * and open the template in the editor.
  */
 package ProgramEkskursi;
+
+/**
+ *
+ */
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -13,8 +17,7 @@ import javax.swing.JPanel;
 public class Background extends JPanel {
 private Image image  ;
 public Background(){
-    //image = new ImageIcon(getClass().getResource("/gambar/IMG_0254.jpg")).getImage();
-    image = new ImageIcon(getClass().getResource("/gambar/IMG_0254.jpg")).getImage();
+    image = new ImageIcon(getClass().getResource("/gambar/UI_mhs.jpg")).getImage();
         }
         @Override
         protected void paintComponent(Graphics grphcs){

@@ -8,6 +8,8 @@ package ProgramEkskursi;
 import static ProgramEkskursi.User.konek;
 import javax.swing.JOptionPane;
 import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -47,8 +49,8 @@ public class UI_ChangePassword extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Password yang anda masukkan salah, Password belum diganti");
         }
     }
-  
-
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -165,13 +167,41 @@ public class UI_ChangePassword extends javax.swing.JFrame {
         String[] x={String.valueOf(CurrentPassword.getText()),String.valueOf(NewPassword.getText()),String.valueOf(Konfirmasi.getText())};
         if(x[1].equals(x[2])){
             GantiPassword(x[1],x[0] );
+            if(tipe.equals("mahasiswa")){
+                try {
+                    new UI_Mahasiswa(username).setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(UI_ChangePassword.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                dispose();
+            }else if(tipe.equals("operator")){
+                new UI_Operator().setVisible(true);
+                dispose();
+            }else{
+                new UI_Dosen().setVisible(true);
+                dispose();
+            }
         }else{
             JOptionPane.showMessageDialog(rootPane, "Password baru dan konfirmasi berbeda, Password belum diganti");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        this.dispose();
+        if(tipe.equals("mahasiswa")){
+            try {
+                new UI_Mahasiswa(username).setVisible(true);
+            } catch (SQLException ex) {
+                Logger.getLogger(UI_ChangePassword.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            dispose();
+        }else if(tipe.equals("operator")){
+            new UI_Operator().setVisible(true);
+            dispose();
+        }else{
+            new UI_Dosen().setVisible(true);
+            dispose();
+        }
+        dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

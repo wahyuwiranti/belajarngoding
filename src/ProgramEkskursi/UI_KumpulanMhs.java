@@ -103,7 +103,7 @@ public class UI_KumpulanMhs extends javax.swing.JFrame {
         dispose();
     }
     public void deleteData(){
-        int pesan=JOptionPane.showConfirmDialog(null, "Anda yakin menghapus data"+jTextField1.getText()+"?","Konfirmasi",
+        int pesan=JOptionPane.showConfirmDialog(null, "Anda yakin menghapus data "+jTextField1.getText()+"?","Konfirmasi",
                 JOptionPane.OK_CANCEL_OPTION);
         if(pesan==JOptionPane.OK_OPTION){
             KumpulanMahasiswa obj=new KumpulanMahasiswa();

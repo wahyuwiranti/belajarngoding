@@ -17,9 +17,9 @@ import java.util.logging.Logger;
  * @author asus pc
  */
 public class User {
-    Scanner input=new Scanner(System.in);
     String username;
     String password;
+    Scanner input=new Scanner(System.in);
     static Connection konek;
     
     public static Connection getConnection(){
