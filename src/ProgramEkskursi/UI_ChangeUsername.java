@@ -160,6 +160,14 @@ public class UI_ChangeUsername extends javax.swing.JFrame {
         }else{
             JOptionPane.showMessageDialog(rootPane, "Username baru dan konfirmasi berbeda, Username belum diganti");
         }
+        try {
+            if(tipe.equals("mahasiswa")){
+                new UI_Mahasiswa(x[1]).setVisible(true);
+                dispose();
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(UI_ChangeUsername.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

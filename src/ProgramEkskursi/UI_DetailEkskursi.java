@@ -288,14 +288,13 @@ public class UI_DetailEkskursi extends javax.swing.JFrame {
         int pesan=JOptionPane.showConfirmDialog(null, "Anda yakin mendaftar?","Konfirmasi",
                 JOptionPane.OK_CANCEL_OPTION);
         Random r= new Random();
-        //int[] rand=new int[5];
-        //for(int i=0;i<5;i++) rand[i]=r.nextInt();
-        // rand=r.ints(5);
-        //String kode="eks"+rand/*+""+rand[1]+""+rand[2]+""+rand[3]+""+rand[4]*/;
-        //System.out.println(kode);
+        int[] rand=new int[5];
+        for(int i=0;i<5;i++) rand[i]=r.nextInt(10)%10;
+        String kode="eks"+rand[0]+""+rand[1]+""+rand[2]+""+rand[3]+""+rand[4];
+        System.out.println(kode);
         if(pesan==JOptionPane.OK_OPTION){
             try {
-                String query="INSERT INTO pembayaran(ID,NIM,Status) values ('"+eks.ID+"','"+mhs.nim+"','0')";
+                String query="INSERT INTO pembayaran(kodebayar,ID,NIM,Status) values ('"+kode+"','"+eks.ID+"','"+mhs.nim+"','0')";
                 PreparedStatement stat=konek.prepareStatement(query);
                 stat.executeUpdate();
                 

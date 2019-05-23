@@ -5,18 +5,74 @@
  */
 package ProgramEkskursi;
 
-/**
- *
- * @author Jahro
- */
-public class UI_BayarEkskursi extends javax.swing.JFrame {
+import static ProgramEkskursi.User.konek;
+import com.mysql.cj.xdevapi.Result;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
+public class UI_BayarEkskursi extends javax.swing.JFrame {
+    String kodebayar;
+    Mahasiswa mhs=new Mahasiswa();
+    Ekskursi eks=new Ekskursi();
     /**
      * Creates new form UI_BayarEkskursi
      */
     public UI_BayarEkskursi() {
         initComponents();
     }
+    
+    public UI_BayarEkskursi(String kodebayar) throws SQLException {
+        this.kodebayar=kodebayar;
+        ResultSet x=konek.createStatement().executeQuery("Select * From Pembayaran where kodebayar='"+kodebayar+"'");
+        if(x.next()){
+            String[] a=new String[2];
+            a[0]=x.getString("NIM");
+            a[1]=x.getString("ID");
+            System.out.println(a[0]);
+            System.out.println(a[1]);
+            loadMhs(a[0]);
+            loadEks(a[1]);
+        }
+        initComponents();
+    }
+    
+    private void loadMhs(String NIM) throws SQLException{
+         ResultSet m=konek.createStatement().executeQuery("SELECT * FROM `mahasiswa` where NIM='"+NIM+"'");
+         if(m.next()){
+            mhs.nama=m.getString("nama");
+            mhs.nim=m.getString("nim");
+            mhs.password=m.getString("pass");
+            mhs.username=m.getString("username");
+            mhs.prodi=m.getString("prodi");
+         }
+     }
+
+    private void loadEks(String ID) throws SQLException{
+         ResultSet m=konek.createStatement().executeQuery("SELECT * FROM `kegiatan` where ID='"+ID+"'");
+         if(m.next()){
+             eks.ID=m.getString("ID");
+             eks.Pj=new Dosen(m.getString("NIP"));
+             eks.biaya=m.getInt("biaya");
+             eks.tujuan=m.getString("tujuan");
+             eks.departure=m.getDate("Departure");
+             eks.kuota=m.getInt("kuota");
+             eks.nama=m.getString("nama");
+             eks.prodi=m.getString("prodi");
+//            Dosen pembimbing=new Dosen();
+//            String ID;
+//            String nama;
+//            String prodi;
+//            Date departure;
+//
+//            String tujuan;
+//            int biaya;
+//            int kuota;
+         }
+     }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -47,6 +103,7 @@ public class UI_BayarEkskursi extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jToggleButton2 = new javax.swing.JToggleButton();
         jToggleButton3 = new javax.swing.JToggleButton();
@@ -98,7 +155,7 @@ public class UI_BayarEkskursi extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 405, Short.MAX_VALUE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
@@ -123,13 +180,13 @@ public class UI_BayarEkskursi extends javax.swing.JFrame {
 
         jLabel9.setText("Total Bayar ");
 
-        jLabel11.setText("jLabel10");
+        jLabel11.setText(": "+eks.ID);
 
-        jLabel12.setText("jLabel10");
+        jLabel12.setText(": "+kodebayar);
 
-        jLabel13.setText("jLabel10");
+        jLabel13.setText(": "+mhs.nama);
 
-        jLabel14.setText("jLabel10");
+        jLabel14.setText(": "+eks.biaya);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -177,6 +234,8 @@ public class UI_BayarEkskursi extends javax.swing.JFrame {
 
         jLabel10.setText("Setelah melakukan pembayaran silahkan temui Operator Program Studi Terkait.");
 
+        jLabel15.setText("Dengan membawa bukti transaksi");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -186,9 +245,8 @@ public class UI_BayarEkskursi extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel10)
-                        .addGap(0, 32, Short.MAX_VALUE)))
+                    .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, 425, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -197,8 +255,10 @@ public class UI_BayarEkskursi extends javax.swing.JFrame {
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel15)
                 .addContainerGap())
         );
 
@@ -257,7 +317,7 @@ public class UI_BayarEkskursi extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 217, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 227, Short.MAX_VALUE)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -287,10 +347,25 @@ public class UI_BayarEkskursi extends javax.swing.JFrame {
 
     private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
         // TODO add your handling code here:
+        new UI_WaitingList(mhs.username).setVisible(true);
+        dispose();
     }//GEN-LAST:event_jToggleButton2ActionPerformed
 
     private void jToggleButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton3ActionPerformed
         // TODO add your handling code here:
+        int pesan=JOptionPane.showConfirmDialog(null, "Anda yakin membatalkan pendaftaran peserta "+eks.nama+"?","Konfirmasi",
+                JOptionPane.OK_CANCEL_OPTION);
+        if(pesan==JOptionPane.OK_OPTION){
+            try {
+                String query = "DELETE FROM pembayaran WHERE kodebayar='"+kodebayar+"'";
+                PreparedStatement stat=(PreparedStatement) konek.prepareStatement(query);
+                stat.executeUpdate();
+            } catch (SQLException ex) {
+                Logger.getLogger(UI_BayarEkskursi.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            new UI_WaitingList(mhs.username).setVisible(true);
+            dispose();
+        }
     }//GEN-LAST:event_jToggleButton3ActionPerformed
 
     /**
@@ -335,6 +410,7 @@ public class UI_BayarEkskursi extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

@@ -20,7 +20,8 @@ import javax.swing.table.DefaultTableModel;
 public class UI_WaitingList extends javax.swing.JFrame {
     DefaultTableModel model;
     String username;
-    String ID;
+    String KodeBayar;
+    boolean status;
     /**
      * Creates new form UI_WaitingList
      */
@@ -32,14 +33,10 @@ public class UI_WaitingList extends javax.swing.JFrame {
         //Memberi Penamaan pada Tabel
         model = new DefaultTableModel();
         tabelEkskursi.setModel(model);
-        model.addColumn("ID");
+        model.addColumn("Kode Bayar");
         model.addColumn("Nama");
-        model.addColumn("Program Studi");
         model.addColumn("Departure");
-        //model.addColumn("Durasi");
-        //model.addColumn("Tujuan");
-        //model.addColumn("Biaya");
-        model.addColumn("Kuota");
+        model.addColumn("Keterangan");
         
         LoadAll();
     }
@@ -52,14 +49,10 @@ public class UI_WaitingList extends javax.swing.JFrame {
         //Memberi Penamaan pada Tabel
         model = new DefaultTableModel();
         tabelEkskursi.setModel(model);
-        model.addColumn("ID");
+        model.addColumn("Kode Bayar");
         model.addColumn("Nama");
-        model.addColumn("Program Studi");
         model.addColumn("Departure");
-        //model.addColumn("Durasi");
-        //model.addColumn("Tujuan");
-        //model.addColumn("Biaya");
-        model.addColumn("Kuota");
+        model.addColumn("Keterangan");
         
         LoadAll();
     }
@@ -70,17 +63,19 @@ public void LoadAll(){
         try{
             //Membuat Statement Pemanggilan data pada table mahasiswa dari database
             Statement stat=(Statement) User.getConnection().createStatement();
-            String query="SELECT * FROM KEGIATAN WHERE KEGIATAN.ID IN (SELECT ID FROM PEMBAYARAN WHERE NIM=(SELECT NIM FROM MAHASISWA WHERE USERNAME='"+username+"'));";
+            String query="SELECT * FROM KEGIATAN NATURAL JOIN PEMBAYARAN WHERE PEMBAYARAN.NIM=(Select NIM From Mahasiswa Where USERNAME='"+username+"')";
             ResultSet res=stat.executeQuery(query);
             
             //penelusuran baris pada tabel mahasiswa dari database
             while(res.next()){
-                Object[] obj = new Object[5];
-                obj[0] = res.getString("ID");
+                Object[] obj = new Object[4];
+                obj[0] = res.getString("KodeBayar");
+                //obj[1] = res.getString("ID");
                 obj[1] = res.getString("Nama");
-                obj[2] = res.getString("prodi");
-                obj[3] = res.getString("departure");
-                obj[4] = res.getString("kuota");
+                obj[2] = res.getString("departure");
+                //obj[4] = res.getString("kuota");
+                if((boolean) res.getBoolean("status")) obj[3] = "Tervalidasi";
+                else obj[3] = "Menunggu Validasi";
                 
                 model.addRow(obj);
             }
@@ -94,7 +89,7 @@ public void LoadAll(){
             //tidak ada baris terpilih
             return;
         }
-        ID=(String) model.getValueAt(i, 0);
+        KodeBayar=(String) model.getValueAt(i, 0);
         
 //        jTextField1.setText(""+model.getValueAt(i, 1));
 //        jTextField2.setText(""+model.getValueAt(i, 0));
@@ -115,6 +110,7 @@ public void LoadAll(){
         tabelEkskursi = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
         jToggleButton2 = new javax.swing.JToggleButton();
+        jToggleButton1 = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -162,12 +158,21 @@ public void LoadAll(){
             }
         });
 
+        jToggleButton1.setText("Detail");
+        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jToggleButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jToggleButton2)
                 .addContainerGap())
         );
@@ -175,7 +180,9 @@ public void LoadAll(){
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jToggleButton2)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jToggleButton2)
+                    .addComponent(jToggleButton1))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -220,6 +227,16 @@ public void LoadAll(){
         dispose();
     }//GEN-LAST:event_jToggleButton2ActionPerformed
 
+    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+        try {
+            // TODO add your handling code here:
+            new UI_BayarEkskursi(KodeBayar).setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(UI_WaitingList.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        dispose();
+    }//GEN-LAST:event_jToggleButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -260,6 +277,7 @@ public void LoadAll(){
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JToggleButton jToggleButton2;
     private javax.swing.JTable tabelEkskursi;
     // End of variables declaration//GEN-END:variables
