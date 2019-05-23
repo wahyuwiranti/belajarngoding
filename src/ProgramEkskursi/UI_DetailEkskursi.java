@@ -9,8 +9,10 @@ import static ProgramEkskursi.User.konek;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.IntStream;
 import javax.swing.JOptionPane;
 
 /**
@@ -285,6 +287,12 @@ public class UI_DetailEkskursi extends javax.swing.JFrame {
         // TODO add your handling code here:
         int pesan=JOptionPane.showConfirmDialog(null, "Anda yakin mendaftar?","Konfirmasi",
                 JOptionPane.OK_CANCEL_OPTION);
+        Random r= new Random();
+        //int[] rand=new int[5];
+        //for(int i=0;i<5;i++) rand[i]=r.nextInt();
+        // rand=r.ints(5);
+        //String kode="eks"+rand/*+""+rand[1]+""+rand[2]+""+rand[3]+""+rand[4]*/;
+        //System.out.println(kode);
         if(pesan==JOptionPane.OK_OPTION){
             try {
                 String query="INSERT INTO pembayaran(ID,NIM,Status) values ('"+eks.ID+"','"+mhs.nim+"','0')";
