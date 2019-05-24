@@ -23,6 +23,7 @@ public class UI_DetailEkskursi extends javax.swing.JFrame {
     Mahasiswa mhs=new Mahasiswa();
     Ekskursi eks=new Ekskursi();
     String tipe;
+    int peserta;
     /**
      * Creates new form UI_DetailEkskursi
      */
@@ -35,7 +36,16 @@ public class UI_DetailEkskursi extends javax.swing.JFrame {
         this.tipe=tipe;
         loadMhs(username);
         loadEks(ID);
+        getPeserta();
         initComponents();
+    }
+    
+    private void getPeserta() throws SQLException{
+        ResultSet m=konek.createStatement().executeQuery("SELECT COUNT(NIM) FROM `pembayaran` where ID='"+eks.ID+"' AND status='1'");
+        if(m.next())
+            peserta=m.getInt(1);
+        else
+            peserta=0;
     }
     
     private void loadMhs(String Username) throws SQLException{
@@ -134,7 +144,7 @@ public class UI_DetailEkskursi extends javax.swing.JFrame {
         E6.setText(": Rp. "+eks.biaya+",-");
 
         E7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        E7.setText(": "+eks.kuota);
+        E7.setText(": "+peserta+"/"+eks.kuota);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("ID");

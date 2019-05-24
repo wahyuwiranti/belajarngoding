@@ -17,7 +17,7 @@ import javax.swing.JPanel;
 public class Background1 extends JPanel {
 private Image image  ;
 public Background1(){
-    image = new ImageIcon(getClass().getResource("/gambar/BG_Lain.jpg")).getImage();
+    image = new ImageIcon(getClass().getResource("/gambar/UI_EkskursiMhs.jpg")).getImage();
         }
         @Override
         protected void paintComponent(Graphics grphcs){

@@ -39,9 +39,6 @@ public class UI_EkskursiMhs extends javax.swing.JFrame {
         model.addColumn("Nama");
         model.addColumn("Program Studi");
         model.addColumn("Departure");
-        //model.addColumn("Durasi");
-        //model.addColumn("Tujuan");
-        //model.addColumn("Biaya");
         model.addColumn("Kuota");
         
         LoadAll();
@@ -99,27 +96,7 @@ public class UI_EkskursiMhs extends javax.swing.JFrame {
             return;
         }
         ID=(String) model.getValueAt(i, 0);
-        
-//        jTextField1.setText(""+model.getValueAt(i, 1));
-//        jTextField2.setText(""+model.getValueAt(i, 0));
-//        jComboBox1.getModel().setSelectedItem(model.getValueAt(i, 2));
     }
-//    public void updateData(){
-//        // Menambahkan Data Mahasiswa
-//        String[] x=new String[4];
-//        x[0]=jTextField1.getText();
-//        x[1]=jTextField2.getText();
-//        x[2]=String.valueOf(jComboBox1.getSelectedItem());
-//        x[3]=(1900+jDateChooser1.getDate().getYear())+"-"+
-//             (1+jDateChooser1.getDate().getMonth())+"-"+
-//             jDateChooser1.getDate().getDate();
-//        System.out.println(jDateChooser1.getDate().getMonth());
-//        KumpulanMahasiswa obj=new KumpulanMahasiswa();
-//        obj.UpdateMhs(new Mahasiswa(x[0],x[1],x[2],x[3]));
-//        
-//        new UI_KumpulanMhs().setVisible(true);
-//        dispose();
-//    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -130,7 +107,7 @@ public class UI_EkskursiMhs extends javax.swing.JFrame {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        background1 = new ProgramEkskursi.Background();
+        background11 = new ProgramEkskursi.Background1();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelEkskursi = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
@@ -173,42 +150,42 @@ public class UI_EkskursiMhs extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout background1Layout = new javax.swing.GroupLayout(background1);
-        background1.setLayout(background1Layout);
-        background1Layout.setHorizontalGroup(
-            background1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, background1Layout.createSequentialGroup()
+        javax.swing.GroupLayout background11Layout = new javax.swing.GroupLayout(background11);
+        background11.setLayout(background11Layout);
+        background11Layout.setHorizontalGroup(
+            background11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(background11Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(background1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 619, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, background1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(background11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 619, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(background11Layout.createSequentialGroup()
+                        .addGap(485, 485, 485)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(6, 6, 6)
                         .addComponent(jButton1)))
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        background1Layout.setVerticalGroup(
-            background1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, background1Layout.createSequentialGroup()
-                .addContainerGap(98, Short.MAX_VALUE)
+        background11Layout.setVerticalGroup(
+            background11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, background11Layout.createSequentialGroup()
+                .addContainerGap(87, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(background1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addContainerGap())
+                .addGap(6, 6, 6)
+                .addGroup(background11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton2)
+                    .addComponent(jButton1))
+                .addGap(30, 30, 30))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(background11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(background11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -281,7 +258,7 @@ public class UI_EkskursiMhs extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private ProgramEkskursi.Background background1;
+    private ProgramEkskursi.Background1 background11;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JPopupMenu jPopupMenu1;
